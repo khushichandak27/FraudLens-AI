@@ -1,0 +1,15 @@
+# Data (too large for GitHub, and Kaggle's ToS discourages redistribution)
+data/creditcard.csv
+data/processed_data.pkl
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+venv/
+.env
