@@ -20,6 +20,34 @@ Credit card fraud detection is a classic imbalanced classification problem — f
 
 
 
+\## 📸 Screenshots
+
+
+
+\### Dataset Overview
+
+!\[Dataset Overview](screenshots/dataset\_overview.png)
+
+
+
+\### Transaction Analyzer — Fraud Detected
+
+!\[Transaction Analyzer - Fraud](screenshots/transaction\_analyzer\_fraud.png)
+
+
+
+\### Transaction Analyzer — Genuine Transaction
+
+!\[Transaction Analyzer - Genuine](screenshots/transaction\_analyzer\_genuine.png)
+
+
+
+\### Model Performance
+
+!\[Model Performance](screenshots/model\_performance.png)
+
+
+
 \## 📊 Dataset
 
 
