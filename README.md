@@ -10,14 +10,17 @@ A complete end-to-end machine learning project for detecting fraudulent credit c
 
 ### App Screenshots
 
-| Dataset Overview | Model Performance |
-|---|---|
-| ![Dataset Overview](screenshots/dataset_overview.png) | ![Model Performance](screenshots/model_performance.png) |
+**Dataset Overview**
+![Dataset Overview](screenshots/dataset_overview.png)
 
-| Transaction Analyzer — Fraud Detected | Transaction Analyzer — Genuine |
-|---|---|
-| ![Transaction Analyzer - Fraud](screenshots/transaction_analyzer_fraud.png) | ![Transaction Analyzer - Genuine](screenshots/transaction_analyzer_genuine.png) |
+**Transaction Analyzer — Fraud Detected**
+![Transaction Analyzer - Fraud](screenshots/transaction_analyzer_fraud.png)
 
+**Transaction Analyzer — Genuine**
+![Transaction Analyzer - Genuine](screenshots/transaction_analyzer_genuine.png)
+
+**Model Performance**
+![Model Performance](screenshots/model_performance.png)
 ---
 
 ## 📌 Problem Statement
@@ -51,25 +54,24 @@ Credit card fraud detection is a classic imbalanced classification problem:
 
 ## 📂 Project Structure
 
+```
 FraudLens-AI/
 ├── notebooks/
-│ ├── 01_eda_preprocessing.ipynb ← EDA, scaling, train/test split, SMOTE
-│ ├── 02_modeling.ipynb ← Train & compare 3 models
-│ ├── 03_evaluation.ipynb ← Confusion matrix, ROC, PR curve
-│ └── 04_shap.ipynb ← SHAP explainability
-│
+│   ├── 01_eda_preprocessing.ipynb
+│   ├── 02_modeling.ipynb
+│   ├── 03_evaluation.ipynb
+│   └── 04_shap.ipynb
 ├── models/
-│ ├── model.pkl ← Final trained Random Forest
-│ ├── amount_scaler.pkl
-│ └── time_scaler.pkl
-│
-├── screenshots/ ← App screenshots for this README
+│   ├── model.pkl
+│   ├── amount_scaler.pkl
+│   └── time_scaler.pkl
+├── screenshots/
 ├── assets/
-│ └── logo.png ← App logo
-│
-├── app.py ← Streamlit web application
+│   └── logo.png
+├── app.py
 ├── requirements.txt
 └── README.md
+```
 
 > **Note:** `data/creditcard.csv` isn't included in this repo (150MB+, exceeds GitHub's limits). Download it from Kaggle and place it in a `data/` folder to run the notebooks or app locally.
 
