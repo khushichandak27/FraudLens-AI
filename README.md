@@ -4,9 +4,11 @@ A complete end-to-end machine learning project for detecting fraudulent credit c
 
 ---
 
-## 🌐 Live Demo
+## 🚀 Live Demo
 
-> **[Launch FraudLens AI](#)** <!-- add your Streamlit Cloud link here once deployed -->
+Try FraudLens AI here:
+
+🔗 [FraudLens AI — Live App](https://fraudlens-ai-randomforest.streamlit.app/)
 
 ### App Screenshots
 
@@ -56,19 +58,25 @@ Credit card fraud detection is a classic imbalanced classification problem:
 
 ```
 FraudLens-AI/
+│
+├── app.py
+│
+├── data/
+│   ├── creditcard_sample.csv
+│   ├── original_test_evaluation.csv.gz
+│   └── dataset_stats.json
+│
+├── models/
+│   ├── model.pkl
+│   ├── amount_scaler.pkl
+│   └── time_scaler.pkl
+│
 ├── notebooks/
 │   ├── 01_eda_preprocessing.ipynb
 │   ├── 02_modeling.ipynb
 │   ├── 03_evaluation.ipynb
 │   └── 04_shap.ipynb
-├── models/
-│   ├── model.pkl
-│   ├── amount_scaler.pkl
-│   └── time_scaler.pkl
-├── screenshots/
-├── assets/
-│   └── logo.png
-├── app.py
+│
 ├── requirements.txt
 └── README.md
 ```
