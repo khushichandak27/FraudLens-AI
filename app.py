@@ -165,10 +165,15 @@ if page == "Dataset Overview":
     st.title(" FraudLens AI — Dataset Overview")
     st.write("A snapshot of the credit card transaction dataset used to train the fraud detection model.")
 
-    total_txn = len(df)
-    fraud_txn = int(df["Class"].sum())
-    fraud_rate = fraud_txn / total_txn * 100
-    avg_amount = df["Amount"].mean()
+        # Load original dataset statistics
+    with open("data/dataset_stats.json", "r") as f:
+        stats = json.load(f)
+
+    # Extract dynamically calculated statistics
+    total_txn = stats["total_transactions"]
+    fraud_txn = stats["fraudulent_transactions"]
+    fraud_rate = stats["fraud_rate"]
+    avg_amount = stats["average_amount"]
 
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Total Transactions", f"{total_txn:,}")
