@@ -300,36 +300,30 @@ elif page == "Model Performance":
     st.title(" Model Performance")
     st.write("Evaluation of the Random Forest model on the held-out test set.")
 
+    # Load original held-out test evaluation
+    @st.cache_data
+    def load_original_evaluation():
+        return pd.read_csv(
+            "data/original_test_evaluation.csv.gz",
+            compression="gzip"
+        )
 
-    # Prepare evaluation data from the deployment dataset
-    from sklearn.model_selection import train_test_split
+    eval_df = load_original_evaluation()
 
-    # Separate features and target
-    y = df["Class"].astype(int)
-
-    # Use the exact feature names expected by the trained model
-    if hasattr(model, "feature_names_in_"):
-        feature_columns = list(model.feature_names_in_)
-    else:
-        feature_columns = [
-            col for col in df.columns
-            if col != "Class"
+    # Original test features and labels
+    feature_columns = [
+        col for col in eval_df.columns
+        if col not in [
+            "Actual_Class",
+            "Predicted_Class",
+            "Fraud_Probability"
         ]
+    ]
 
-    X = df[feature_columns].copy()
-
-    # Create a reproducible stratified holdout
-    X_train, X_test, y_train, y_test = train_test_split(
-        X,
-        y,
-        test_size=0.20,
-        random_state=42,
-        stratify=y
-    )
-
-    # Generate predictions using the existing trained model
-    y_pred = model.predict(X_test)
-    y_proba = model.predict_proba(X_test)[:, 1]
+    X_test = eval_df[feature_columns].copy()
+    y_test = eval_df["Actual_Class"].astype(int)
+    y_pred = eval_df["Predicted_Class"].astype(int)
+    y_proba = eval_df["Fraud_Probability"].astype(float)
 
     from sklearn.metrics import (
         confusion_matrix, classification_report,
