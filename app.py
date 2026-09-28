@@ -135,7 +135,7 @@ with st.sidebar:
 # ---------- Cached Data & Model Loading ----------
 @st.cache_data
 def load_data():
-    df = pd.read_csv("data/creditcard.csv")
+    df = pd.read_csv("data/creditcard_sample.csv")
     seconds_in_day = df["Time"] % (24 * 3600)
     df["Hour"] = seconds_in_day // 3600
     df["Minute"] = (seconds_in_day % 3600) // 60
