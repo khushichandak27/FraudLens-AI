@@ -300,7 +300,34 @@ elif page == "Model Performance":
     st.title(" Model Performance")
     st.write("Evaluation of the Random Forest model on the held-out test set.")
 
-    X_train, X_test, y_train, y_test, X_train_smote, y_train_smote = joblib.load("data/processed_data.pkl")
+
+    # Prepare evaluation data from the deployment dataset
+    from sklearn.model_selection import train_test_split
+
+    # Separate features and target
+    y = df["Class"].astype(int)
+
+    # Use the exact feature names expected by the trained model
+    if hasattr(model, "feature_names_in_"):
+        feature_columns = list(model.feature_names_in_)
+    else:
+        feature_columns = [
+            col for col in df.columns
+            if col != "Class"
+        ]
+
+    X = df[feature_columns].copy()
+
+    # Create a reproducible stratified holdout
+    X_train, X_test, y_train, y_test = train_test_split(
+        X,
+        y,
+        test_size=0.20,
+        random_state=42,
+        stratify=y
+    )
+
+    # Generate predictions using the existing trained model
     y_pred = model.predict(X_test)
     y_proba = model.predict_proba(X_test)[:, 1]
 
